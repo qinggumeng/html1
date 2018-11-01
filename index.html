@@ -2,6 +2,17 @@
 
 <div id="d1" style="width:50px;height:50px;background:darkred;position:absolute;top:20px;top:20px;"></div>
 
+<style>
+  #d2{position:relative;}
+  #hm{display:flex;width:150px;justify-content:center;align-items:center;position:absolute;right:0px;top:0px;bottom:0px;}
+  #cnt{position:absolute;right:0px;top:0px;bottom:0px;left:0px;width:100%;}
+</style>
+
+<div id="d2">
+  <div id="hm"><div>Top</div><div>Tag</div><div>Del</div></div>
+  <div id="cnt">some text in here</div>
+</div>
+
 <script>
   var isTouch = false;
   d1.addEventListener("touchstart",function(){console.log(1);isTouch=true;});
