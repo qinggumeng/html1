@@ -1,22 +1,37 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-<div id="d1" style="width:50px;height:50px;background:darkred;position:absolute;top:20px;top:20px;"></div>
+<div id="d1" style="display:none;width:50px;height:50px;background:darkred;position:absolute;top:20px;top:20px;"></div>
 
 <style>
-  #d2{position:relative;}
+  *{
+   margin:0px;
+    padding:0px;
+  }
+  #d2{position:relative;height:50px;overflow:hidden;}
   #hm{display:flex;width:150px;justify-content:center;align-items:center;position:absolute;right:0px;top:0px;bottom:0px;}
-  #cnt{position:absolute;right:0px;top:0px;bottom:0px;left:0px;width:100%;}
+  #hm div:nth-of-type(1){background:red;}
+    #hm div:nth-of-type(1){background:orange;}
+    #hm div:nth-of-type(1){background:pink;}
+  #cnt{position:absolute;right:0px;top:0px;bottom:0px;left:0px;width:100%;height:50px;
+    background:white
+    transform:translate(0px);transition:all .3s}
 </style>
 
 <div id="d2">
   <div id="hm"><div>Top</div><div>Tag</div><div>Del</div></div>
-  <div id="cnt">some text in here</div>
+  <div id="cnt">some text in heresome text in here</div>
 </div>
 
 <script>
   var isTouch = false;
-  d1.addEventListener("touchstart",function(){console.log(1);isTouch=true;});
-  d1.addEventListener("touchmove",function(e){console.log(2);if(isTouch)
-  {d1.style.left=(parseInt(e.pageX)-20)+"px";d1.style.top=parseInt(e.pageY-20)+"px";}});
-  d1.addEventListener("touchend",function(){console.log(3);isTouch=false});
+  var dis;
+  var ww = document.body.clientWidth||document.documentElement.clientWidth;
+  cnt.addEventListener("touchstart",function(){console.log(1);isTouch=true;});
+  cnt.addEventListener("touchmove",function(e){console.log(2);if(isTouch)
+  {dis=parseInt(ww) - parseInt(e.pageX);cnt.style.transform = "translate(-"+dis+"px)"}});
+  cnt.addEventListener("touchend",function(){console.log(3);isTouch=false;if(dis>100){
+  cnt.style.transform = "translate(-150px)"
+  }else{
+  cnt.style.transform = "translate(0px)"
+  }});
 </script>
